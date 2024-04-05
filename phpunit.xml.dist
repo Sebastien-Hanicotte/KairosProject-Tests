@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!-- https://phpunit.readthedocs.io/en/latest/configuration.html -->
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/8.0/phpunit.xsd"
-         backupGlobals="false"
-         colors="true"
-         bootstrap="vendor/autoload.php"
->
-    <testsuites>
-        <testsuite name="Project Test Suite">
-            <directory>Test</directory>
-        </testsuite>
-    </testsuites>
-
-    <filter>
-        <whitelist>
-            <directory>KairosProject</directory>
-        </whitelist>
-    </filter>
-
-    <logging>
-        <log type="coverage-html" target="build/coverage" lowUpperBound="50" highLowerBound="75"/>
-        <log type="junit" target="build/phpunit_logfile.xml"/>
-    </logging>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.0/phpunit.xsd" backupGlobals="false" colors="true" bootstrap="vendor/autoload.php" cacheDirectory=".phpunit.cache">
+  <coverage>
+    <report>
+      <html outputDirectory="build/coverage" lowUpperBound="50" highLowerBound="75"/>
+    </report>
+  </coverage>
+  <testsuites>
+    <testsuite name="Project Test Suite">
+      <directory>Test</directory>
+    </testsuite>
+  </testsuites>
+  <logging>
+    <junit outputFile="build/phpunit_logfile.xml"/>
+  </logging>
+  <source>
+    <include>
+      <directory>KairosProject</directory>
+    </include>
+  </source>
 </phpunit>

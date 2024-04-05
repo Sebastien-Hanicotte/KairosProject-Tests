@@ -22,6 +22,7 @@ use KairosProject\Tests\Test\Stub\AccessorClass;
 use KairosProject\Tests\Test\Stub\MethodClass;
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\Constraint\Callback;
+use PHPUnit\Framework\Attributes\CoversClass;
 use ReflectionException;
 use stdClass;
 
@@ -34,11 +35,12 @@ use stdClass;
  * PHP version 7.2
  *
  * @category Test
+ * @package  Chronos
  * @author   matthieu vallance <matthieu.vallance@cscfa.fr>
  * @license  MIT <https://opensource.org/licenses/MIT>
  * @link     http://cscfa.fr
- * @covers   \KairosProject\Tests\AbstractTestClass
  */
+#[CoversClass(\KairosProject\Tests\AbstractTestClass::class)]
 class Test extends AbstractTestClass
 {
     /**
@@ -101,8 +103,9 @@ class Test extends AbstractTestClass
      * Validate the assertHasSimpleAccessor method of the tested class
      *
      * @throws ReflectionException
+     * @return void
      */
-    public function testHasSimpleAccessorWithSame()
+    public function testHasSimpleAccessorWithSame(): void
     {
         $this->assertHasSimpleAccessor('same:accessorProperty', new stdClass());
     }
@@ -113,8 +116,9 @@ class Test extends AbstractTestClass
      * Validate the assertHasSimpleAccessor method of the tested class
      *
      * @throws ReflectionException
+     * @return void
      */
-    public function testHasSimpleAccessorWithFullAccessor()
+    public function testHasSimpleAccessorWithFullAccessor(): void
     {
         $this->assertHasSimpleAccessor('accessorProperty', 'someValue');
     }
@@ -125,8 +129,9 @@ class Test extends AbstractTestClass
      * Validate the assertHasSimpleAccessor method of the tested class
      *
      * @throws ReflectionException
+     * @return void
      */
-    public function testHasSimpleAccessorWithGetterOnly()
+    public function testHasSimpleAccessorWithGetterOnly(): void
     {
         try {
             $this->assertHasSimpleAccessor('getterProperty', 'someValue');
@@ -149,8 +154,9 @@ class Test extends AbstractTestClass
      * Validate the assertHasSimpleAccessor method of the tested class
      *
      * @throws ReflectionException
+     * @return void
      */
-    public function testHasSimpleAccessorWithSetterOnly()
+    public function testHasSimpleAccessorWithSetterOnly(): void
     {
         try {
             $this->assertHasSimpleAccessor('setterProperty', 'someValue');
@@ -166,8 +172,9 @@ class Test extends AbstractTestClass
      * Validate the assertHasSimpleAccessor method of the tested class
      *
      * @throws ReflectionException
+     * @return void
      */
-    public function testHasSimpleAccessorWithBoolean()
+    public function testHasSimpleAccessorWithBoolean(): void
     {
         $this->assertHasSimpleAccessor('boolProperty', true);
     }
@@ -178,8 +185,9 @@ class Test extends AbstractTestClass
      * Validate the getClassProperty method of the tested class
      *
      * @throws ReflectionException
+     * @return void
      */
-    public function testGetClassProperty()
+    public function testGetClassProperty(): void
     {
         $propertyReflection = $this->getClassProperty('setterProperty');
         $this->assertEquals('setterProperty', $propertyReflection->getName());
@@ -205,8 +213,9 @@ class Test extends AbstractTestClass
      * Validate the getInstance method of the tested class
      *
      * @throws ReflectionException
+     * @return void
      */
-    public function testGetInstance()
+    public function testGetInstance(): void
     {
         $instance = $this->getInstance();
         $this->assertNull($instance->accessorProperty);
@@ -259,8 +268,9 @@ class Test extends AbstractTestClass
      * Validate the assertConstructor method of the tested class
      *
      * @throws ReflectionException
+     * @return void
      */
-    public function testAssertConstructor()
+    public function testAssertConstructor(): void
     {
         $this->assertConstructor(
             ['accessorProperty' => 'accessor', 'getterProperty' => 'getter', 'setterProperty' => 'setter'],
@@ -388,8 +398,9 @@ class Test extends AbstractTestClass
      * Validate the assertPublicMethod method of the tested class
      *
      * @throws ReflectionException
+     * @return void
      */
-    public function testPublicMethod()
+    public function testPublicMethod(): void
     {
         $this->assertPublicMethod('publicMethod');
 
@@ -424,8 +435,9 @@ class Test extends AbstractTestClass
      * Validate the assertProtectedMethod method of the tested class
      *
      * @throws ReflectionException
+     * @return void
      */
-    public function testProtectedMethod()
+    public function testProtectedMethod(): void
     {
         $this->assertProtectedMethod('protectedMethod');
 
@@ -460,8 +472,9 @@ class Test extends AbstractTestClass
      * Validate the assertPrivateMethod method of the tested class
      *
      * @throws ReflectionException
+     * @return void
      */
-    public function testPrivateMethod()
+    public function testPrivateMethod(): void
     {
         $this->assertPrivateMethod('privateMethod');
 
@@ -496,8 +509,9 @@ class Test extends AbstractTestClass
      * Validate the getInvocationBuilder method of the tested class
      *
      * @throws ReflectionException
+     * @return void
      */
-    public function testGetInvocationBuilder()
+    public function testGetInvocationBuilder(): void
     {
         $mock = $this->createMock(AccessorClass::class);
         $invocation = $this->getInvocationBuilder($mock, $this->once(), 'getAccessorProperty');

@@ -18,6 +18,7 @@ namespace KairosProject\Tests\Test\Constraint;
 
 use KairosProject\Constrait\InjectionConstraint;
 use PHPUnit\Framework\Constraint\Constraint;
+use PHPUnit\Framework\Attributes\CoversClass;
 use ReflectionException;
 use stdClass;
 
@@ -30,8 +31,8 @@ use stdClass;
  * @license  MIT <https://opensource.org/licenses/MIT>
  * @link     http://cscfa.fr
  * @method InjectionConstraint getInstance(array $injection = [])
- * @covers \KairosProject\Constrait\InjectionConstraint
  */
+ #[CoversClass(InjectionConstraint::class)]
 class InjectionConstraintTest extends ConstraintDecoratorTest
 {
     /**

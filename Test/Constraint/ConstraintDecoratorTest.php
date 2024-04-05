@@ -19,6 +19,7 @@ namespace KairosProject\Tests\Test\Constraint;
 use KairosProject\Constrait\ConstraintDecorator;
 use KairosProject\Tests\AbstractTestClass;
 use PHPUnit\Framework\Constraint\Constraint;
+use PHPUnit\Framework\Attributes\CoversClass;
 use ReflectionException;
 
 /**
@@ -30,8 +31,8 @@ use ReflectionException;
  * @license  MIT <https://opensource.org/licenses/MIT>
  * @link     http://cscfa.fr
  * @method ConstraintDecorator getInstance(array $injection = [])
- * @covers \KairosProject\Constrait\ConstraintDecorator
  */
+#[CoversClass(ConstraintDecorator::class)]
 class ConstraintDecoratorTest extends AbstractTestClass
 {
     /**
@@ -84,11 +85,12 @@ class ConstraintDecoratorTest extends AbstractTestClass
 
         $constraint->expects($this->exactly(2))
             ->method('evaluate')
-            ->withConsecutive(
-                [$this->equalTo('other'), $this->equalTo('description'), $this->isFalse()],
-                [$this->equalTo('some_other'), $this->equalTo('some_description'), $this->isTrue()]
-            )
-            ->willReturnOnConsecutiveCalls(true, false);
+            ->willReturnMap(
+                [
+                    ['other', 'description', false, true],
+                    ['some_other', 'some_description', true, false]
+                ]
+            );
 
         $this->assertTrue($instance->evaluate('other', 'description', false));
         $this->assertFalse($instance->evaluate('some_other', 'some_description', true));

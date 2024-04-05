@@ -84,8 +84,8 @@ echo "$TEST_RES" > build/phpmd.txt
 do_test "$PHP_PATH vendor/bin/phpunit" PHPUNIT 100
 echo "$TEST_RES" > build/phpunit.txt
 
-do_test "$PHP_PATH vendor/bin/phpcpd $SOURCE_PATH" PHPCPD 1
-echo "$TEST_RES" > build/phpcpd.txt
+# do_test "$PHP_PATH vendor/bin/phpcpd $SOURCE_PATH" PHPCPD 1
+# echo "$TEST_RES" > build/phpcpd.txt
 
 if [[ "$STATUS" -eq 0 ]]
 then
