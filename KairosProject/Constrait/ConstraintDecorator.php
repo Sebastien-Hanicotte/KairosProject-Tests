@@ -40,7 +40,7 @@ class ConstraintDecorator extends Constraint
      *
      * @var Constraint
      */
-    private $constraint;
+    private Constraint $constraint;
 
     /**
      * ConstraintDecorator constructor.
