@@ -17,7 +17,7 @@
 			"email" : "matthieu.vallance@cscfa.fr"
 		}
 	],
-	"minimum-stability" : "stable",
+	"minimum-stability" : "RC",
 	"autoload" : {
 		"psr-4" : {
 			"KairosProject\\" : "KairosProject/"
